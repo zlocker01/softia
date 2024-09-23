@@ -1,6 +1,5 @@
 import { redirect } from 'next/navigation';
 import { createClient } from '@/utils/supabase/server';
-import { Logout } from '@/components/auth/Logout';
 
 export default async function PrivatePage() {
   const supabase = createClient();
@@ -15,7 +14,6 @@ export default async function PrivatePage() {
     <div className="flex flex-col justify-center items-center">
       <h2>Bienvenido {user.name}</h2>
       <p>Correo: {user.email}</p>
-      <Logout />
     </div>
   );
 }
