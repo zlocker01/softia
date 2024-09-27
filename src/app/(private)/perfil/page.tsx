@@ -1,19 +1,12 @@
-import { redirect } from 'next/navigation';
-import { createClient } from '@/utils/supabase/server';
+import { getSupaUser } from '@/utils/users/getSupaUser';
 
-export default async function PrivatePage() {
-  const supabase = createClient();
-
-  const { data, error } = await supabase.auth.getUser();
-  if (error || !data?.user) {
-    redirect('/login');
-  }
-  const user = data.user.user_metadata;
+export default async function page() {
+  const user = await getSupaUser();
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <h2>Bienvenido {user.name}</h2>
-      <p>Correo: {user.email}</p>
+      <h2>Bienvenido {user?.user_metadata.name}</h2>
+      <p>Correo: {user?.email}</p>
     </div>
   );
 }
