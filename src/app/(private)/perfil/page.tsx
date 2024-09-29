@@ -1,16 +1,12 @@
-import { getSupaUser } from '@/data/users/getSupaUser';
-import { ShowUserProfile } from '@/data/users/showUserProfile';
+import { CardUser } from '@/components/users/CardUser';
+import { getUser } from '@/data/users/getUser';
 
 export default async function page() {
-  const user = await getSupaUser();
-  if (!user) {
-    return;
-  }
-  const profile = await ShowUserProfile();
+  const user = await getUser();
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <h2>Nombre: {profile?.nombre}</h2>
+    <div className="flex justify-center items-center h-screen">
+      <CardUser user={user} />
     </div>
   );
 }

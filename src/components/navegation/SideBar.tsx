@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { Logout } from '../auth/Logout';
-import { DarkModeButton } from '@/components/navegation/DarkModeButton';
 
 export const SideBar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -158,7 +157,6 @@ export const SideBar = () => {
           </ul>
           <div className="mt-10">
             <Logout />
-            <DarkModeButton />
           </div>
         </div>
       </aside>

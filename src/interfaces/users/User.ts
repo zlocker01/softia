@@ -1,10 +1,7 @@
 export interface User {
   id: string;
-  nombre: string;
+  name: string;
   email: string;
-  telefono: string;
-  foto_perfil: string;
-  fecha_creacion: Date;
-  ultimo_acceso: Date;
   pagado: boolean;
+  plan: string;
 }
