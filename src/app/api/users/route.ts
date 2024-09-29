@@ -9,8 +9,9 @@ export async function POST(request: Request) {
 
     const { data, error } = await supabase
       .from('usuarios')
-      .insert([newUser])
-      .select();
+      .upsert([newUser], { onConflict: 'id' })
+      .select()
+      .single();
 
     if (error) {
       return NextResponse.json({ error: error.message }, { status: 500 });

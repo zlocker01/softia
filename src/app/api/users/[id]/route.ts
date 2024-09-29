@@ -7,13 +7,14 @@ const supabase = createClient();
 
 export async function GET(req: NextRequest) {
   try {
-    const id = req.url.split('/').pop();
+    const { pathname } = new URL(req.url);
+    const id = pathname.split('/').pop();
     idUserSchema.parse(id);
 
     const { data, error } = await supabase
       .from('usuarios')
-      .select('*')
-      .eq('id', id)
+      .select()
+      .eq('id_supa_user', id)
       .single();
 
     if (error) {

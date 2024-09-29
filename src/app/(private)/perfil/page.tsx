@@ -1,12 +1,16 @@
-import { getSupaUser } from '@/utils/users/getSupaUser';
+import { getSupaUser } from '@/data/users/getSupaUser';
+import { ShowUserProfile } from '@/data/users/showUserProfile';
 
 export default async function page() {
   const user = await getSupaUser();
+  if (!user) {
+    return;
+  }
+  const profile = await ShowUserProfile();
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <h2>Bienvenido {user?.user_metadata.name}</h2>
-      <p>Correo: {user?.email}</p>
+      <h2>Nombre: {profile?.nombre}</h2>
     </div>
   );
 }

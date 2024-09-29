@@ -11,30 +11,23 @@ import { UserPost } from '@/interfaces/users/UserPost';
 export const ShowUserProfile = async (): Promise<User | null> => {
   const supaUser = useUserStore.getState().user;
 
-  if (supaUser) {
-    try {
-      const profile = await getUser(supaUser.id);
-      console.log('🚀 ~ ShowUserProfile ~ profile:', profile);
+  if (!supaUser) {
+    console.error('Error fetching user profile:');
+    return null;
+  }
+  const profile = await getUser(supaUser.id);
 
-      if (!profile) {
-        console.log('User not found, creating a new user profile...');
-        const userData: UserPost = {
-          nombre: supaUser.name || '',
-          email: supaUser.email || '',
-          pagado: false,
-          id_supa_user: supaUser.id,
-        };
-
-        const newProfile = await postUser(userData);
-        return newProfile;
-      }
-
-      return profile;
-    } catch (error) {
-      console.error('Error fetching user profile:', error);
-      return null;
-    }
+  if (!profile) {
+    console.log('🎉 User not found, creating a new user profile...');
+    const userData: UserPost = {
+      nombre: supaUser.name || '',
+      email: supaUser.email || '',
+      pagado: false,
+      id_supa_user: supaUser.id,
+    };
+    const newProfile: User = await postUser(userData);
+    return newProfile;
   }
 
-  return null;
+  return profile;
 };

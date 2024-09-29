@@ -26,5 +26,5 @@ export const getSupaUser = async (): Promise<SupaUser | null> => {
 
   const { setUser } = useUserStore.getState();
   setUser(formattedUser);
-  return user;
+  return formattedUser;
 };
