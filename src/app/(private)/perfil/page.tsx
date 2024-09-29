@@ -1,8 +1,8 @@
 import { CardUser } from '@/components/users/CardUser';
-import { getUser } from '@/data/users/getUser';
+import { updateUser } from '@/data/users/updateUser';
 
 export default async function page() {
-  const user = await getUser();
+  const user = await updateUser();
 
   return (
     <div className="flex justify-center items-center h-screen">

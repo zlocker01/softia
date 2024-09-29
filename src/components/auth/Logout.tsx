@@ -9,7 +9,7 @@ export const Logout = () => {
     if (error) {
       console.error(error);
     } else {
-      window.location.reload();
+      window.location.replace('/login');
     }
   }
   return <Button onClick={signOut}>Cerrar Sesión</Button>;

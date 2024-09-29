@@ -6,7 +6,7 @@ import { User } from '@/interfaces/users/User';
  * and returns a formatted User object. Returns null if there is no user.
  * @returns {Promise<User | null>} The current user as a formatted User object, or null if no user is logged in.
  */
-export const getUser = async (): Promise<User | null> => {
+export const updateUser = async (): Promise<User | null> => {
   const supabase = createClient();
 
   const { data: userResponse, error: getUserError } =
@@ -21,6 +21,7 @@ export const getUser = async (): Promise<User | null> => {
 
   const { error: updateError } = await supabase.auth.updateUser({
     data: {
+      name: user.user_metadata?.name || 'Nombre de Usuario',
       pagado: false,
       plan: 'Basico',
     },
