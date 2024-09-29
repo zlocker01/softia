@@ -1,4 +1,6 @@
-export const postUser = async (user: any) => {
+import { UserPost } from '@/interfaces/users/UserPost';
+
+export const postUser = async (user: UserPost) => {
   const response = await fetch('http://localhost:3000/api/users', {
     method: 'POST',
     headers: {
