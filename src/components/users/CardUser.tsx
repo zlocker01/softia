@@ -34,8 +34,10 @@ export const CardUser = ({ user }: any) => {
         <RocketIcon className="text-yellow-500" />
         <h3>Plan: {user?.plan}</h3>
       </div>
-      <h3>Modo:</h3>
-      <DarkModeButton />
+      <div className="w-full border-t-2 border-dotted border-gray-200 p-2 text-center">
+        <h3>Modo:</h3>
+        <DarkModeButton />
+      </div>
     </Card>
   );
 };
