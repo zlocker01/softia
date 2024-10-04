@@ -1,6 +1,8 @@
+import { Suspense } from 'react';
 import { redirect } from 'next/navigation';
 import { createClient } from '@/utils/supabase/server';
 import { CardUser } from '@/components/users/CardUser';
+import { SkeletonUser } from '@/components/users/SkeletonUser';
 
 export const revalidate = 60;
 
@@ -21,7 +23,15 @@ export default async function page() {
 
   return (
     <div className="flex justify-center items-center h-screen">
-      <CardUser user={user} />
+      <Suspense
+        fallback={
+          <div>
+            <SkeletonUser />
+          </div>
+        }
+      >
+        <CardUser user={user} />
+      </Suspense>
     </div>
   );
 }
