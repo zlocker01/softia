@@ -11,12 +11,7 @@ export async function GET(req: NextRequest) {
     const id = pathname.split('/').pop();
     idUserSchema.parse(id);
 
-    const { data, error } = await supabase
-      .from('usuarios')
-      .select()
-      .eq('id_supa_user', id)
-      .single();
-
+    const { data, error } = await supabase.auth.getUser();
     if (error) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
