@@ -48,6 +48,7 @@ export const FormUser = () => {
         description: 'Perfil actualizado.',
         variant: 'success',
       });
+      router.replace('/perfil');
       router.refresh();
     }
   }

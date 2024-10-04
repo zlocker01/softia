@@ -5,7 +5,7 @@ import { CardUser } from '@/components/users/CardUser';
 export const revalidate = 60;
 
 export default async function page() {
-  const getClient = async (): Promise<any | null> => {
+  const getClient = async (): Promise<unknown | null> => {
     const supabase = createClient();
 
     const { data, error } = await supabase.auth.getUser();
