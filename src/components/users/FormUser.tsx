@@ -17,6 +17,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { updateUserName } from '@/data/users/updateUserName';
+import { DarkModeButton } from '@/components/navegation/DarkModeButton';
 
 export const FormUser = () => {
   const { toast } = useToast();
@@ -47,7 +48,7 @@ export const FormUser = () => {
         description: 'Perfil actualizado.',
         variant: 'success',
       });
-      router.push('http://localhost:3000/perfil');
+      router.refresh();
     }
   }
 
@@ -80,6 +81,10 @@ export const FormUser = () => {
           </Button>
         </form>
       </Form>
+      <div className="w-full border-t-2 border-dotted border-gray-200 pt-2 text-center my-5">
+        <p className="text-gray-500">Mode Oscuro</p>
+        <DarkModeButton />
+      </div>
     </div>
   );
 };
