@@ -1,11 +1,12 @@
-// import { create } from 'zustand';
+import { create } from 'zustand';
+import { UserId } from '@/interfaces/users/UserId';
 
-// interface UserState {
-//   user: SupaUser | null;
-//   setUser: (user: SupaUser | null) => void;
-// }
+interface UserState {
+  userId: UserId | null;
+  setUserId: (userId: UserId | null) => void;
+}
 
-// export const useUserStore = create<UserState>((set) => ({
-//   user: null,
-//   setUser: (user) => set({ user }),
-// }));
+export const useUserStore = create<UserState>((set) => ({
+  userId: null,
+  setUserId: (userId) => set({ userId }),
+}));

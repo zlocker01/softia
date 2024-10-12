@@ -113,7 +113,7 @@ export const SideBar = () => {
                 <span className="ms-3">Chatbot</span>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 href="/correos"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
@@ -131,7 +131,7 @@ export const SideBar = () => {
                 </svg>
                 <span className="ms-3">Correos</span>
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link
                 href="/perfil"
