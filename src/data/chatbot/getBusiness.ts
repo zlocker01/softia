@@ -1,9 +1,10 @@
 import { createClient } from '@/utils/supabase/client';
 import { getUserId } from '@/data/getUserIdServer';
+import { Business } from '@/interfaces/users/Business';
 
 const supabase = createClient();
 
-export const getBusiness = async (): Promise<object | null> => {
+export const getBusiness = async (): Promise<Business | null> => {
   const userId = await getUserId();
 
   if (!userId) {

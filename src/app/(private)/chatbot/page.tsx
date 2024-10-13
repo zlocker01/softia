@@ -5,7 +5,8 @@ import { getBusiness } from '@/data/chatbot/getBusiness';
 
 const page = async () => {
   const business = await getBusiness();
-  console.log('🚀 ~ page ~ business:', business);
+  if (business === null) return null;
+  console.log('🚀 ~ page ~ business:', business.id);
 
   return (
     <div className=" text-center">
