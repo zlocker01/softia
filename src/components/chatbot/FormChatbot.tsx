@@ -39,6 +39,7 @@ export const FormChatbot = () => {
 
   async function onSubmit(values: z.infer<typeof businessSchema>) {
     const error = await postBusiness(values);
+
     if (error) {
       console.error('❌ error!!! -->', error);
       toast({

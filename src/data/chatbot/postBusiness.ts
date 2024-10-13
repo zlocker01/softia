@@ -1,16 +1,12 @@
 import { createClient } from '@/utils/supabase/client';
+import { getUserId } from '@/data/getUserIdClient';
 
 const supabase = createClient();
 
 export const postBusiness = async (
   values: any
 ): Promise<string | undefined> => {
-  const { data, error: errorUser } = await supabase.auth.getUser();
-  if (errorUser || !data) {
-    console.error('❌ error!!! -->', errorUser?.message);
-    return errorUser?.message;
-  }
-  const userId = data.user.id;
+  const userId = await getUserId();
 
   const mappedValues = {
     nombre_negocio: values.name,
