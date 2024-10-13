@@ -8,5 +8,6 @@ export const getUserId = async (): Promise<string | null> => {
     console.error('error!!! -->', error?.message);
     return null;
   }
-  return data.user.id;
+  const userId = data.user.id;
+  return userId;
 };
