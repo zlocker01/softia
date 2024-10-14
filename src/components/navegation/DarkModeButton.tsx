@@ -1,6 +1,7 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Toggle } from '../ui/toggle';
+import { useUserStore } from '@/store/darkMode/darkMode';
 
 /**
  * A button to toggle dark mode.
@@ -12,26 +13,16 @@ import { Toggle } from '../ui/toggle';
  * @returns A button element with a moon or sun icon depending on the current mode.
  */
 export function DarkModeButton() {
-  const [darkMode, setDarkMode] = useState<boolean | null>(null);
+  const { darkMode, setDarkMode } = useUserStore();
 
+  // Este efecto se ejecuta al cargar el componente para aplicar la clase 'dark'
   useEffect(() => {
-    const storedMode = localStorage.getItem('darkMode');
-    setDarkMode(storedMode === 'true');
-    document.documentElement.classList.toggle('dark', storedMode === 'true');
-  }, []);
-
-  useEffect(() => {
-    if (darkMode !== null) {
-      localStorage.setItem('darkMode', darkMode ? 'true' : 'false');
-      document.documentElement.classList.toggle('dark', darkMode);
-    }
-  }, [darkMode]);
-
-  if (darkMode === null) return null;
+    document.documentElement.classList.toggle('dark', darkMode);
+  }, [darkMode]); // Se ejecuta cada vez que cambia darkMode
 
   return (
     <div>
-      <Toggle onClick={() => setDarkMode((prev) => !prev)}>
+      <Toggle onClick={() => setDarkMode(!darkMode)}>
         {darkMode ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
