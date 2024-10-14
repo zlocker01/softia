@@ -1,14 +1,47 @@
 'use client';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Logout } from '../auth/Logout';
 
 export const SideBar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const sidebarRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prev) => !prev);
   };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      sidebarRef.current &&
+      !sidebarRef.current.contains(event.target as Node)
+    ) {
+      if (window.innerWidth <= 768) {
+        setIsOpen(false);
+      }
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768 && isOpen) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [isOpen]);
 
   return (
     <nav>
@@ -21,7 +54,7 @@ export const SideBar = () => {
           width="50"
           height="50"
           fill="currentColor"
-          className="bi bi-list text-red-800 border rounded-full p-1"
+          className="bi bi-list text-black dark:text-white border rounded-full p-1"
           viewBox="0 0 16 16"
         >
           <path
@@ -31,6 +64,7 @@ export const SideBar = () => {
         </svg>
       </button>
       <aside
+        ref={sidebarRef}
         className={`fixed top-0 left-0 z-40 w-56 h-screen transition-transform ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
