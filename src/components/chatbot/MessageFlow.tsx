@@ -2,7 +2,7 @@ import { MessageFlowProps } from '@/interfaces/business/MessageFlowProps';
 
 export const MessageFlow: React.FC<MessageFlowProps> = ({ business }) => {
   return (
-    <div className="flex flex-col justify-between md:w-1/2 m-auto px-2 md:px-0">
+    <div className="flex flex-col justify-between md:w-1/2 m-auto px-2 md:px-0 dark:text-black">
       <div className="ml-1 bg-gray-100 border border-gray-300 rounded-tl-lg rounded-tr-lg rounded-br-lg p-4 shadow-md my-2 max-w-xs md:max-w-md mx-auto">
         Hola, ¡bienvenido a{' '}
         <span className="text-purple-500">{business.nombre_negocio}</span>
@@ -18,7 +18,7 @@ export const MessageFlow: React.FC<MessageFlowProps> = ({ business }) => {
         ¿Tienen algún correo?
       </div>
       <div className="ml-1 bg-gray-100 border border-gray-300 rounded-tl-lg rounded-tr-lg rounded-br-lg p-4 shadow-md my-2 max-w-xs md:max-w-md mx-auto">
-        ¡Claro! es:{' '}
+        ¡Claro! es{' '}
         <span className="text-purple-500">{business.email_contacto}</span>.
       </div>
       <div className="mr-1 bg-gray-200 border border-gray-300 rounded-tl-lg rounded-tr-lg rounded-bl-lg p-4 shadow-md my-2 max-w-xs md:max-w-md mx-auto">
