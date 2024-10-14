@@ -13,11 +13,13 @@ const page = async () => {
     <div className="text-center">
       <Title text={'Chatbot'} />
       <MessageFlow business={business} />
-      <Button className="my-5">
-        <Link href={'http://localhost:3000/chatbot/editar'}>
-          Editar Chatbot
-        </Link>
-      </Button>
+      <div className="px-2 md:px-0 my-5">
+        <Button>
+          <Link href={'http://localhost:3000/chatbot/editar'}>
+            Editar Chatbot
+          </Link>
+        </Button>
+      </div>
     </div>
   );
 };

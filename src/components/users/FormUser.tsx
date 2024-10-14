@@ -77,9 +77,11 @@ export const FormUser = () => {
               </FormItem>
             )}
           />
-          <Button size={'xs'} type="submit">
-            Actualizar Perfil
-          </Button>
+          <div className="flex justify-center">
+            <Button size={'xs'} type="submit">
+              Actualizar Perfil
+            </Button>
+          </div>
         </form>
       </Form>
       <div className="w-full border-t-2 border-dotted border-gray-200 pt-2 text-center my-5">
