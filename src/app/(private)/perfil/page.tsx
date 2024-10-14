@@ -4,12 +4,11 @@ import { SkeletonUser } from '@/components/users/SkeletonUser';
 import { getUser } from '@/data/users/getUser';
 
 export const revalidate = 60;
-
 export default async function page() {
   const user = await getUser();
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex flex-col justify-center items-center h-screen">
       <Suspense
         fallback={
           <div>
