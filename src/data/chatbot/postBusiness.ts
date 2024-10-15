@@ -8,6 +8,12 @@ export const postBusiness = async (
 ): Promise<string | undefined> => {
   const userId = await getUserId();
 
+  const { data: business } = await supabase
+    .from('negocios')
+    .select('*')
+    .eq('id_user', userId)
+    .single();
+
   const mappedValues = {
     nombre_negocio: values.name,
     ubicacion: values.location,
@@ -20,13 +26,24 @@ export const postBusiness = async (
     id_user: userId,
   };
 
-  const { error } = await supabase
-    .from('negocios')
-    .upsert(mappedValues)
-    .select();
-  if (error) {
-    console.error('❌ error!!! -->', error.message);
-    return error.message;
+  if (business) {
+    const { error } = await supabase
+      .from('negocios')
+      .update(mappedValues)
+      .eq('id_user', userId);
+
+    if (error) {
+      console.error('❌ Error updating business -->', error.message);
+      return error.message;
+    }
+  } else {
+    const { error } = await supabase.from('negocios').insert(mappedValues);
+
+    if (error) {
+      console.error('❌ Error inserting business -->', error.message);
+      return error.message;
+    }
   }
+
   return;
 };

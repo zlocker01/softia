@@ -227,7 +227,7 @@ export const FormChatbot = () => {
                 <FormControl>
                   <textarea
                     {...field}
-                    className="w-full p-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none"
+                    className="w-full p-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none dark:text-black"
                     rows={4}
                     placeholder="Escribe la descripción de tu negocio y toda la información necesaria para que el chatbot pueda ayudar a tus clientes con sus dudas..."
                   />
