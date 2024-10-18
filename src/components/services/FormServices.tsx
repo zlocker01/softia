@@ -126,7 +126,16 @@ export const FormService = () => {
               <FormItem>
                 <FormLabel>Precio</FormLabel>
                 <FormControl>
-                  <Input type="number" placeholder="" {...field} />
+                  <Input
+                    type="number"
+                    placeholder=""
+                    {...field}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      //? empty value or  convert to number
+                      field.onChange(value === '' ? value : Number(value));
+                    }}
+                  />
                 </FormControl>
                 <FormDescription>Precio en $ para tu negocio</FormDescription>
                 <FormMessage />
