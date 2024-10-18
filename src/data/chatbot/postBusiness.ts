@@ -7,10 +7,14 @@ import { revalidatePath } from 'next/cache';
 const supabase = createClient();
 
 export const postBusiness = async (values: {
-  title: string;
+  name: string;
+  location: string;
+  number: string;
+  email: string;
+  openingHours: string;
+  closingHours: string;
   description: string;
-  duration: string;
-  cost: number;
+  days: string[];
 }): Promise<string | undefined> => {
   const userId = await getUserId();
 
@@ -27,10 +31,14 @@ export const postBusiness = async (values: {
   }
 
   const mappedValues = {
-    titulo: values.title,
+    nombre_negocio: values.name,
+    ubicacion: values.location,
+    telefono_contacto: values.number,
+    email_contacto: values.email,
+    horario_apertura: values.openingHours,
+    horario_cierre: values.closingHours,
     descripcion: values.description,
-    duracion: values.duration,
-    precio: values.cost,
+    dias_laborales: values.days,
     id_user: userId,
   };
 
