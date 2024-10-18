@@ -1,4 +1,4 @@
-import { createClient } from '@/utils/supabase/client';
+import { createClient } from '@/utils/supabase/server';
 import { getUserId } from '@/data/getUserIdServer';
 import { Business } from '@/interfaces/users/Business';
 
@@ -8,7 +8,8 @@ export const getBusiness = async (): Promise<Business | null> => {
   const userId = await getUserId();
 
   if (!userId) {
-    console.error('error!!! -->', 'no user');
+    console.error('error!!! -->', 'no user found');
+    return null;
   }
   const { data, error } = await supabase
     .from('negocios')
@@ -16,7 +17,7 @@ export const getBusiness = async (): Promise<Business | null> => {
     .eq('id_user', userId)
     .single();
   if (error) {
-    console.error('❌ Error ->:', error.message);
+    console.error('🚀 ~ getBusiness ~ error:', error.message);
     return null;
   }
   return data;

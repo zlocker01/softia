@@ -1,5 +1,7 @@
-import { createClient } from '@/utils/supabase/client';
-import { getUserId } from '@/data/getUserIdClient';
+'use server';
+import { createClient } from '@/utils/supabase/server';
+import { getUserId } from '@/data/getUserIdServer';
+import { revalidatePath } from 'next/cache';
 
 const supabase = createClient();
 
@@ -45,5 +47,6 @@ export const postBusiness = async (
     }
   }
 
+  revalidatePath('/chatbot');
   return;
 };

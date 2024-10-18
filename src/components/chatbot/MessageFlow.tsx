@@ -1,3 +1,4 @@
+'use client';
 import { MessageFlowProps } from '@/interfaces/business/MessageFlowProps';
 import { ChatbotCard } from './ChatbotCard';
 import { ClientCard } from './ClientCard';

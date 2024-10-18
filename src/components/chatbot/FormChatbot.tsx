@@ -229,7 +229,7 @@ export const FormChatbot = () => {
                     {...field}
                     className="w-full p-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none dark:text-black"
                     rows={4}
-                    placeholder="Escribe la descripción de tu negocio y toda la información necesaria para que el chatbot pueda ayudar a tus clientes con sus dudas..."
+                    placeholder="En la Clínica de Fisioterapia Rehabilita, nos dedicamos a ayudar a nuestros pacientes a recuperar su movilidad y bienestar a través de un enfoque personalizado y profesional. Nuestro equipo de fisioterapeutas altamente capacitados ofrece una amplia gama de tratamientos, que incluyen terapia manual, ejercicios de rehabilitación, electroterapia y terapia ocupacional, adaptados a las necesidades individuales de cada paciente."
                   />
                 </FormControl>
                 <FormDescription>
