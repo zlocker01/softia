@@ -55,7 +55,7 @@ export const CardUser = ({ user }: any | null) => {
             Editar Perfil
           </Link>
         </Button>
-        <InfoDialog description="Cambia tu nombre de usuario, tu plan de suscripcion y metodos de pago en esta sección y modo oscuro." />
+        <InfoDialog description="En esta sección, puedes actualizar tu nombre de usuario, cambiar tu plan de suscripción y gestionar tus métodos de pago. También puedes activar o desactivar el modo oscuro" />
       </CardFooter>
     </Card>
   );
