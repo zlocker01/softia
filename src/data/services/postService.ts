@@ -1,12 +1,11 @@
 'use server';
-
 import { createClient } from '@/utils/supabase/server';
 import { getUserId } from '@/data/getUserIdServer';
 import { revalidatePath } from 'next/cache';
 
 const supabase = createClient();
 
-export const postBusiness = async (values: {
+export const postsService = async (values: {
   title: string;
   description: string;
   duration: string;
@@ -14,15 +13,13 @@ export const postBusiness = async (values: {
 }): Promise<string | undefined> => {
   const userId = await getUserId();
 
-  const { data: business, error: fetchError } = await supabase
-    .from('negocios')
+  const { data: services, error: fetchError } = await supabase
+    .from('servicios')
     .select('*')
-    .eq('id_user', userId)
-    .single();
+    .eq('id_user', userId);
 
-  if (fetchError && fetchError.code !== 'PGRST116') {
-    // if isn't 'no rows found error'
-    console.error('❌ Error fetching business -->', fetchError.message);
+  if (fetchError) {
+    console.error('🚀 ~ fetchError:', fetchError.message);
     return fetchError.message;
   }
 
@@ -34,23 +31,23 @@ export const postBusiness = async (values: {
     id_user: userId,
   };
 
-  if (business) {
+  if (services && services.length > 0) {
     const { error: updateError } = await supabase
-      .from('negocios')
+      .from('servicios')
       .update(mappedValues)
       .eq('id_user', userId);
 
     if (updateError) {
-      console.error('❌ Error updating business -->', updateError.message);
+      console.error('🚀 ~ updateError:', updateError.message);
       return updateError.message;
     }
   } else {
     const { error: insertError } = await supabase
-      .from('negocios')
+      .from('servicios')
       .insert(mappedValues);
 
     if (insertError) {
-      console.error('❌ Error inserting business -->', insertError.message);
+      console.error('🚀 ~ insertError:', insertError.message);
       return insertError.message;
     }
   }

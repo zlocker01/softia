@@ -1,5 +1,6 @@
 import { Title } from '@/components/navegation/Title';
 import { FormChatbot } from '@/components/chatbot/FormChatbot';
+import { FormService } from '@/components/services/FormServices';
 
 const page = () => {
   return (
@@ -9,6 +10,7 @@ const page = () => {
         <Title text={'Informacion del Negocio'} />
         <FormChatbot />
         <Title text={'Servicios'} />
+        <FormService />
       </div>
     </div>
   );
