@@ -1,10 +1,10 @@
 import { createClient } from '@/utils/supabase/server';
 import { getUserId } from '@/data/getUserIdServer';
-import { Business } from '@/interfaces/business/Business';
+import { Service } from '@/interfaces/services/Service';
 
 const supabase = createClient();
 
-export const getServices = async (): Promise<Business | null> => {
+export const getServices = async (): Promise<Service[] | null> => {
   const userId = await getUserId();
 
   if (!userId) {
@@ -14,8 +14,7 @@ export const getServices = async (): Promise<Business | null> => {
   const { data, error } = await supabase
     .from('servicios')
     .select('*')
-    .eq('id_user', userId)
-    .single();
+    .eq('id_user', userId);
   if (error) {
     console.error('🚀 ~ getBusiness ~ error:', error.message);
     return null;
