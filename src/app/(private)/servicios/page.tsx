@@ -9,14 +9,14 @@ import { getServices } from '@/data/services/getServices';
 export const revalidate = 60;
 
 const page = async () => {
-  const business = await getServices();
+  const services = await getServices();
 
   return (
     <div className="text-center">
       <Title text={'Servicios'} />
       <InfoDialog description="Personaliza tus servicios y observa un ejemplo aproximado de la interaccion con tus clientes y el chatbot." />
-      {business ? (
-        <MessageFlow getServices={getServices} />
+      {services ? (
+        <h3 className="my-2">aqui estara la card</h3>
       ) : (
         <h3 className="my-2">
           Aún no has personalizado tus servicios, comienza ahora
