@@ -4,7 +4,7 @@ import { Business } from '@/interfaces/business/Business';
 
 const supabase = createClient();
 
-export const getBusiness = async (): Promise<Business | null> => {
+export const getServices = async (): Promise<Business | null> => {
   const userId = await getUserId();
 
   if (!userId) {
@@ -12,7 +12,7 @@ export const getBusiness = async (): Promise<Business | null> => {
     return null;
   }
   const { data, error } = await supabase
-    .from('negocios')
+    .from('servicios')
     .select('*')
     .eq('id_user', userId)
     .single();

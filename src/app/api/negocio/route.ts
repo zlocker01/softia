@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@/utils/supabase/server';
-import { Business } from '@/interfaces/users/Business';
+import { Business } from '@/interfaces/business/Business';
 
 export async function GET() {
   const supabase = createClient();

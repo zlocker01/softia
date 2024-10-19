@@ -1,4 +1,4 @@
-import { Business } from '@/interfaces/users/Business';
+import { Business } from '@/interfaces/business/Business';
 
 export interface MessageFlowProps {
   business: Business;
