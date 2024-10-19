@@ -52,6 +52,6 @@ export const postsService = async (values: {
     }
   }
 
-  revalidatePath('/chatbot');
+  revalidatePath('/services');
   return;
 };
