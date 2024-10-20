@@ -1,5 +1,6 @@
 import { Title } from '@/components/navegation/Title';
 import { FormEditService } from '@/components/services/FormEditService';
+import { MessageFlowServices } from '@/components/services/MessageFlowServices';
 import { getService } from '@/data/services/getService';
 
 const page = async ({ params }: { params: { id: string } }) => {
@@ -11,6 +12,7 @@ const page = async ({ params }: { params: { id: string } }) => {
   return (
     <div className="flex flex-col justify-center items-center gap-5 md:gap-3 mb-5">
       <Title text={'Editar Servicio'} />
+      <MessageFlowServices service={service} />
       <div className="mx-5 md:mx-0 md:w-1/2">
         <Title text={'Servicio'} />
         <FormEditService service={service} />

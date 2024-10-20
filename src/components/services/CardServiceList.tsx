@@ -1,3 +1,4 @@
+'use client';
 import Link from 'next/link';
 import { Button } from '../ui/button';
 import { ServiceCardProps } from '@/interfaces/services/ServiceCardProps';
@@ -33,6 +34,7 @@ export const CardServiceList: React.FC<ServiceCardProps> = ({ services }) => {
           <CardFooter className="flex justify-between items-center w-full mt-4 gap-2">
             <Button>
               <Link
+                className="w-full"
                 href={`http://localhost:3000/servicios/editar/${service.id}`}
               >
                 Editar
