@@ -240,9 +240,11 @@ export const FormChatbot = () => {
               </FormItem>
             )}
           />
-          <Button size={'xs'} type="submit">
-            Actualizar Información
-          </Button>
+          <div className="flex justify-center">
+            <Button size={'xs'} type="submit">
+              Actualizar Información
+            </Button>
+          </div>
         </form>
       </Form>
     </div>

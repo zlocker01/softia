@@ -141,9 +141,11 @@ export const FormEditService = ({ service }: { service: Service }) => {
               </FormItem>
             )}
           />
-          <Button size={'xs'} type="submit">
-            Actualizar Servicio
-          </Button>
+          <div className="flex justify-center">
+            <Button size={'xs'} type="submit">
+              Actualizar Servicio
+            </Button>
+          </div>
         </form>
       </Form>
     </div>
