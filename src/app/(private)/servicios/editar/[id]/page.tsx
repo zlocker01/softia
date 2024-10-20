@@ -1,4 +1,3 @@
-'use server';
 import { Title } from '@/components/navegation/Title';
 import { FormEditService } from '@/components/services/FormEditService';
 import { getService } from '@/data/services/getService';
