@@ -34,7 +34,7 @@ export const InfoDialog: React.FC<InfoDialogProps> = ({ description }) => {
           <AlertDialogDescription>{description}</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogAction>Continuar</AlertDialogAction>
+          <AlertDialogAction className="md:w-1/4">Continuar</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
