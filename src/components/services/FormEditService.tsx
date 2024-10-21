@@ -141,7 +141,7 @@ export const FormEditService = ({ service }: { service: Service }) => {
               </FormItem>
             )}
           />
-          <div className="flex justify-center gap-2">
+          <div className="flex justify-center gap-2 flex-col md:flex-row">
             <Button type="submit">Actualizar Servicio</Button>
             <Button
               type="button"
