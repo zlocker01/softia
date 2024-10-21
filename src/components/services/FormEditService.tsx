@@ -18,10 +18,12 @@ import {
 import { updateService } from '@/data/services/updateService';
 import { servicesSchema } from '@/schemas/servicesSchemas/servicesSchema';
 import { Service } from '@/interfaces/services/Service';
+import { deleteService } from '@/data/services/deleteService';
 
 export const FormEditService = ({ service }: { service: Service }) => {
   const { toast } = useToast();
 
+  const serviceId = service.id;
   const router = useRouter();
 
   const form = useForm<z.infer<typeof servicesSchema>>({
@@ -33,8 +35,6 @@ export const FormEditService = ({ service }: { service: Service }) => {
       cost: service?.precio,
     },
   });
-
-  const serviceId = service.id;
 
   async function onSubmit(values: z.infer<typeof servicesSchema>) {
     const error = await updateService(values, serviceId);
@@ -141,9 +141,29 @@ export const FormEditService = ({ service }: { service: Service }) => {
               </FormItem>
             )}
           />
-          <div className="flex justify-center">
-            <Button size={'xs'} type="submit">
-              Actualizar Servicio
+          <div className="flex justify-center gap-2">
+            <Button type="submit">Actualizar Servicio</Button>
+            <Button
+              type="button"
+              onClick={async () => {
+                (await deleteService({ params: { id: serviceId } }))
+                  ? toast({
+                      title: '¡Eliminado! 😎',
+                      description:
+                        'El servicio ha sido eliminado correctamente.',
+                      variant: 'success',
+                    })
+                  : toast({
+                      title: 'Error al eliminar! 🫤',
+                      description: 'El servicio no ha podido ser eliminado.',
+                      variant: 'destructive',
+                    });
+
+                router.replace('/servicios');
+              }}
+              variant="destructive"
+            >
+              Eliminar
             </Button>
           </div>
         </form>

@@ -31,16 +31,15 @@ export const CardServiceList: React.FC<ServiceCardProps> = ({ services }) => {
               Precio: ${service.precio}
             </p>
           </CardContent>
-          <CardFooter className="flex justify-between items-center w-full mt-4 gap-2">
+          <CardFooter className="flex justify-center items-center w-full mt-4 gap-2">
             <Button>
               <Link
                 className="w-full"
                 href={`http://localhost:3000/servicios/editar/${service.id}`}
               >
-                Editar
+                Ver detalles
               </Link>
             </Button>
-            <Button variant="destructive">Eliminar</Button>
           </CardFooter>
         </Card>
       ))}
