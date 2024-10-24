@@ -25,6 +25,7 @@
     "@radix-ui/react-toggle": "^1.1.0",
     "@supabase/ssr": "^0.5.1",
     "@supabase/supabase-js": "^2.45.4",
+    "@types/react-big-calendar": "^1.8.12",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "conventional-changelog": "^6.0.0",
